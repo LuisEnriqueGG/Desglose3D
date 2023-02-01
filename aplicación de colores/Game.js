@@ -1,4 +1,4 @@
-import * as THREE from '/three.js-master/build/three.module.js';
+import * as THREE from './three.js-master/build/three.module.js';
         import * as YUKA from './yuka.module.js';
         import { GLTFLoader } from './three.js-master/examples/jsm/loaders/GLTFLoader.js';
         import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js';
