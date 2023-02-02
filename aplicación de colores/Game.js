@@ -3,6 +3,7 @@ import * as THREE from './three.js-master/build/three.module.js';
         import { GLTFLoader } from './three.js-master/examples/jsm/loaders/GLTFLoader.js';
         import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js';
         import * as dat from '/dat.gui/build/dat.gui.module.js';
+        import { TransformControls } from './TransformControls.js';
 
         const fileUrl = new URL('../Objetos3D/Ejem1.glb', import.meta.url);
 
@@ -24,10 +25,10 @@ import * as THREE from './three.js-master/build/three.module.js';
 
         const orbit = new OrbitControls(camera, renderer.domElement);
         orbit.target.set(0, 8, 0);
-        orbit.enablePan = false;
+        //orbit.enablePan = false;
         //orbit.maxPolarAngle = Math.PI /2;
-        orbit.enableDamping = true;
-        orbit.update();
+        //orbit.enableDamping = true;
+        //orbit.update();
         
         const grid = new THREE.GridHelper(50, 50);
         scene.add(grid);
@@ -49,6 +50,8 @@ import * as THREE from './three.js-master/build/three.module.js';
         const light2 = new THREE.DirectionalLight(color2, intensity2);
         light2.position.set(0, 10, -7);
         scene.add(light2);
+        
+        
 
         const gui = new dat.GUI();
 
