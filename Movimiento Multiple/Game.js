@@ -16,7 +16,7 @@
         });
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
-        renderer.setClearColor(0xA3A3A3);
+        renderer.setClearColor(0xdcdcdc);  //RGB color chart
 
         const scene = new THREE.Scene();
 
@@ -25,7 +25,7 @@
         camera.lookAt(scene.position);
 
         const orbit = new OrbitControls(camera, renderer.domElement)
-        orbit.target.set(0, 0, 0);
+        orbit.target.set(0, 7, 0);
         //orbit.maxPolarAngle = Math.PI /2;
 
         //Posición de las Luces
