@@ -9,6 +9,9 @@
             TransformControls
         } from './TransformControls.js';
         import * as dat from '/dat.gui/build/dat.gui.module.js';
+        import {RGBELoader} from './three.js-master/examples/jsm/loaders/RGBELoader.js';
+
+        const hdrTexture = new URL('../images/scythian_tombs_8k.hdr', import.meta.url);
 
         //AMBIENTE
         const renderer = new THREE.WebGLRenderer({
@@ -21,28 +24,42 @@
         const scene = new THREE.Scene();
 
         const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 10000);
-        camera.position.set(0, 10, 27);
+        camera.position.set(0, 20, 30);
         camera.lookAt(scene.position);
 
         const orbit = new OrbitControls(camera, renderer.domElement)
-        orbit.target.set(0, 7, 0);
+        orbit.target.set(0, 8, 0);
         //orbit.maxPolarAngle = Math.PI /2;
+
+        //////
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        const loader7 = new RGBELoader();
+        loader7.load(hdrTexture, function(texture){
+             //texture.mapping = THREE.EquirectangularRefractionMapping;
+             scene.background = texture;
+             scene.environment = texture;
+             
+        });
+        /////
+
 
         //Posición de las Luces
         const skyColor = 0xB1E1FF; // light blue
         const groundColor = 0xFFFFFF; // brownish orange
-        const intensity = 2;
+        const intensity = 0.5;
         const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
         scene.add(light);
 
         const color = 0xFFFFFF;
-        const intensity1 = 2.5;
+        const intensity1 = 1;
         const light1 = new THREE.DirectionalLight(color, intensity1);
         light1.position.set(0, 10, 7);
         scene.add(light1);
 
         const color1 = 0xFFFFFF;
-        const intensity2 = 2.5;
+        const intensity2 = 1;
         const light2 = new THREE.DirectionalLight(color1, intensity2);
         light2.position.set(0, 10, -7);
         scene.add(light2);
@@ -53,7 +70,7 @@
 
         const loader = new GLTFLoader();
         const group = new THREE.Group();
-        loader.load('./modelo3D/Tor2.glb', function (glb) {
+        loader.load('./modelo3D/Ejem1.glb', function (glb) {
             const model = glb.scene;
             model.matrixAutoUpdate = false;
             group.add(model);

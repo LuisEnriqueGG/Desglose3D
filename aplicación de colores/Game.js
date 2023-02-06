@@ -4,7 +4,10 @@ import * as THREE from './three.js-master/build/three.module.js';
         import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js';
         import * as dat from '/dat.gui/build/dat.gui.module.js';
         import { TransformControls } from './TransformControls.js';
+        import {RGBELoader} from './three.js-master/examples/jsm/loaders/RGBELoader.js';
 
+
+        const hdrTexture = new URL('../images/alps_field_8k.hdr', import.meta.url);
         const fileUrl = new URL('../Objetos3D/Ejem1.glb', import.meta.url);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -20,7 +23,7 @@ import * as THREE from './three.js-master/build/three.module.js';
             0.1,
             10000
         );
-        camera.position.set(0, 10, 27);
+        camera.position.set(0, 20, 30);
         
 
         const orbit = new OrbitControls(camera, renderer.domElement);
@@ -29,24 +32,41 @@ import * as THREE from './three.js-master/build/three.module.js';
         //orbit.maxPolarAngle = Math.PI /2;
         //orbit.enableDamping = true;
         //orbit.update();
+
+
+
+        //////
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        const loader7 = new RGBELoader();
+        loader7.load(hdrTexture, function(texture){
+             texture.mapping = THREE.EquirectangularRefractionMapping;
+             scene.background = texture;
+             scene.environment = texture;
+             
+        });
+        /////
+
+
         
         const grid = new THREE.GridHelper(50, 50);
         scene.add(grid);
 
         const skyColor = 0xB1E1FF; // light blue
         const groundColor = 0xFFFFFF; // brownish orange
-        const intensity1 = 2;
+        const intensity1 = 0.5;
         const light = new THREE.HemisphereLight( skyColor, groundColor, intensity1);
         scene.add(light);
 
         const color = 0xFFFFFF;
-        const intensity = 2.5;
+        const intensity = 1;
         const light1 = new THREE.DirectionalLight(color, intensity);
         light1.position.set(0, 10, 7);
         scene.add(light1);
 
         const color2 = 0xFFFFFF;
-        const intensity2 = 2.5;
+        const intensity2 = 1;
         const light2 = new THREE.DirectionalLight(color2, intensity2);
         light2.position.set(0, 10, -7);
         scene.add(light2);

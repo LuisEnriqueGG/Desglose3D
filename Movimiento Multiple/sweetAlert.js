@@ -1,9 +1,9 @@
 
 Swal.fire({
-    title: '¡Error!',
+    title: '¡Hay más piezas!',
 	//text:'Revisa',
-    html:'<b class = "rojo"> No se puede unir</b>',
-	icon:'error',
+    html:'<b class = "rojo"> Selecciona más piezas si necesitas</b>',
+	icon:'info',
     confirmButtonText:'Entendido',
 	footer:'<span class = "verde">Puedes moverte con el mouse.</span>',
 	width: '25%',
@@ -18,7 +18,7 @@ Swal.fire({
 	allowOutsideClick: false,
 	allowEscapeKey: false,
 	allowEnterKey:false,
-	stopKeydownPropagation: true,
+	stopKeydownPropagation: false,
 
 	// input:
 	// inputPlaceholder:
