@@ -11,7 +11,7 @@
         import * as dat from '/dat.gui/build/dat.gui.module.js';
         import {RGBELoader} from './three.js-master/examples/jsm/loaders/RGBELoader.js';
 
-        const hdrTexture = new URL('../images/scythian_tombs_8k.hdr', import.meta.url);
+        const hdrTexture = new URL('../images/scythian_tombs_4k.hdr', import.meta.url);
 
         //AMBIENTE
         const renderer = new THREE.WebGLRenderer({
