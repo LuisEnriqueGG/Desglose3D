@@ -51,6 +51,9 @@ import * as THREE from './three.js-master/build/three.module.js';
 
         
         const grid = new THREE.GridHelper(50, 50);
+        //grid.material.opacity = 0.2;
+        //grid.material.depthWrite = false;
+        //grid.material.transparent = false;
         scene.add(grid);
 
         const skyColor = 0xB1E1FF; // light blue
