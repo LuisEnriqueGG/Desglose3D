@@ -1,10 +1,8 @@
-import * as THREE from './three.js-master/build/three.module.js';
-        import * as YUKA from './yuka.module.js';
-        import { GLTFLoader } from './three.js-master/examples/jsm/loaders/GLTFLoader.js';
-        import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js';
+import * as THREE from '../three.js-master/build/three.module.js';
+        import { GLTFLoader } from '../three.js-master/examples/jsm/loaders/GLTFLoader.js';
+        import { OrbitControls } from '../three.js-master/examples/jsm/controls/OrbitControls.js';
         import * as dat from './dat.gui/build/dat.gui.module.js';
-        import { TransformControls } from './TransformControls.js';
-        import {RGBELoader} from './three.js-master/examples/jsm/loaders/RGBELoader.js';
+        import {RGBELoader} from '../three.js-master/examples/jsm/loaders/RGBELoader.js';
 
 
         const hdrTexture = new URL('../aplicaciónColores/images/alps_field_8k.hdr', import.meta.url);

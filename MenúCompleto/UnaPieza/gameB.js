@@ -1,14 +1,10 @@
-        import * as THREE from './Libreria3D/three.module.js';
-        import {
-            OrbitControls
-        } from './Libreria3D/OrbitControls.js';
-        import {
-            GLTFLoader
-        } from './Libreria3D/GLTFLoader.js';
-        import {
-            TransformControls
-        } from './Libreria3D/TransformControls.js';
-        import {RGBELoader} from './Libreria3D/RGBELoader.js';
+import * as THREE from '../three.js-master/build/three.module.js';
+import { OrbitControls } from '../three.js-master/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from '../three.js-master/examples/jsm/loaders/GLTFLoader.js';
+import {
+    TransformControls
+} from '../three.js-master/examples/jsm/controls/TransformControls.js';
+import { RGBELoader } from '../three.js-master/examples/jsm/loaders/RGBELoader.js';
 
         const hdrTexture = new URL('../HDRI/scythian_tombs_4k.hdr', import.meta.url);
 
@@ -64,8 +60,6 @@
         scene.add(light2);
 
         const grid = new THREE.GridHelper(50, 50);
-        grid.material.transparent = true;
-        grid.material.opacity = 0.2;
         scene.add(grid);
 
 
@@ -105,29 +99,29 @@
 
         // ///
 
-        const loader1 = new GLTFLoader();
-        const group1 = new THREE.Group();
-        loader1.load('./modelo3D/Escal.glb', function (glb) {
-            const model1 = glb.scene;
-            model1.matrixAutoUpdate = false;
-            group1.add(model1);
-            scene.add(group1);
-            //vehicle.setRenderComponent(model, sync);
-        });
-        group1.position.x = 4
-        group1.position.y = 0
-        group1.position.z = -9
+        // const loader1 = new GLTFLoader();
+        // const group1 = new THREE.Group();
+        // loader1.load('./modelo3D/Escal.glb', function (glb) {
+        //     const model1 = glb.scene;
+        //     model1.matrixAutoUpdate = false;
+        //     group1.add(model1);
+        //     scene.add(group1);
+        //     //vehicle.setRenderComponent(model, sync);
+        // });
+        // group1.position.x = 4
+        // group1.position.y = 0
+        // group1.position.z = -9
 
-        const tControl1 = new TransformControls(camera, renderer.domElement)
+        // const tControl1 = new TransformControls(camera, renderer.domElement)
 
-        tControl1.addEventListener('dragging-changed', (e) => {
-            orbit.enabled = !e.value
-        })
+        // tControl1.addEventListener('dragging-changed', (e) => {
+        //     orbit.enabled = !e.value
+        // })
 
-        tControl1.attach(group1)
-        scene.add(tControl1)
+        // tControl1.attach(group1)
+        // scene.add(tControl1)
 
-        tControl1.setMode('translate')
+        // tControl1.setMode('translate')
 
         // ///
 
