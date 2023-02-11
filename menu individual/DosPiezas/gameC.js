@@ -64,6 +64,8 @@
         scene.add(light2);
 
         const grid = new THREE.GridHelper(50, 50);
+        grid.material.transparent = true;
+        grid.material.opacity = 0.2;
         scene.add(grid);
 
 
